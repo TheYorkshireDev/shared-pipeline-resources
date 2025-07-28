@@ -1,0 +1,23 @@
+name: Reusable Tag and Release
+
+on:
+  workflow_call:
+    inputs:
+      tag-prefix:
+        required: false
+        type: string
+        default: ""
+jobs:
+  tag-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Tag
+        id: tag
+        uses: anothrNick/github-tag-action@v1.73.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_PREFIX: ${{ inputs.tag-prefix }}
+          RELEASE_BRANCHES: main
