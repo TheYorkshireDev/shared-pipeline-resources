@@ -27,7 +27,7 @@ jobs:
         uses: TheYorkshireDev/github-tag-action@bugfix/support-forward-slash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DRY_RUN: true
+#          DRY_RUN: true
           TAG_PREFIX: "${{ inputs.tag-prefix }}"
           PRERELEASE_SUFFIX: "beta.${{ steps.sha.outputs.short_sha }}"
           PRERELEASE: true
