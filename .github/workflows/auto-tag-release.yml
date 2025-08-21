@@ -25,4 +25,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRY_RUN: true
           TAG_PREFIX: "${{ inputs.tag-prefix }}"
+          PRERELEASE: true
 #          RELEASE_BRANCHES: main
