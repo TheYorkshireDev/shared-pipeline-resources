@@ -17,6 +17,10 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 0
 
+      - name: Extract Short Commit SHA
+        id: sha
+        run: echo "short_sha=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
+
       - name: Create Tag
         id: tag
 #        uses: anothrNick/github-tag-action@1.73.0
@@ -25,5 +29,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRY_RUN: true
           TAG_PREFIX: "${{ inputs.tag-prefix }}"
+          PRERELEASE_SUFFIX: "beta.${{ steps.sha.outputs.short_sha }}"
           PRERELEASE: true
 #          RELEASE_BRANCHES: main
